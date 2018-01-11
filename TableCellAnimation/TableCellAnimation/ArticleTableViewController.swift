@@ -56,9 +56,19 @@ class ArticleTableViewController: UITableViewController {
     
 // MARK: - New stuff added during tutorial
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.alpha = 0
+//        cell.alpha = 0
+//        UIView.animate(withDuration: 1.0, animations: {
+//            cell.alpha = 1
+//            })
+        
+        let rotationgAngleInRadians = 90.0 * CGFloat(Double.pi/180.0)
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
+        
+        cell.layer.transform = rotationTransform
+        
         UIView.animate(withDuration: 1.0, animations: {
-            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
             })
     }
+    
 }
