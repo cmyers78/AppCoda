@@ -21,9 +21,12 @@ struct Loan : Codable {
         case amount = "loan_amount"
     }
     
+    // to handle nested value within another container
     enum LocationKeys : String, CodingKey {
         case country
     }
+    
+    // used instead of default implementation for init(from decoder...) 
     
     init(from decoder : Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
