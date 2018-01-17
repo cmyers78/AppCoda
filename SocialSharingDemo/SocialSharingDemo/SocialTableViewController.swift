@@ -63,6 +63,7 @@ class SocialTableViewController: UITableViewController {
             return
         }
         print("indexPath is: \(indexPath)")
+        print("indexPath.row is: \(indexPath.row)")
         // Display the share menu
         let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .actionSheet)
         let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.default, handler: nil)
@@ -74,7 +75,15 @@ class SocialTableViewController: UITableViewController {
                 return
             }
             
+            let photo = Photo(image: selectedImage, userGenerated: false)
+            let content = PhotoShareContent(photos: [photo])
+            let shareDialog = ShareDialog(content: content)
             
+            do {
+                try shareDialog.show()
+            } catch {
+                print(error)
+            }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
