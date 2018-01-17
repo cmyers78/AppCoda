@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookShare
 
 class SocialTableViewController: UITableViewController {
 
@@ -65,7 +66,16 @@ class SocialTableViewController: UITableViewController {
         // Display the share menu
         let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .actionSheet)
         let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.default, handler: nil)
-        let facebookAction = UIAlertAction(title: "Facebook", style: UIAlertActionStyle.default, handler: nil)
+        let facebookAction = UIAlertAction(title: "Facebook", style: UIAlertActionStyle.default) {
+            (action) in
+            let selectedImageName = self.restaurantImages[indexPath.row]
+            
+            guard let selectedImage = UIImage(named: selectedImageName) else {
+                return
+            }
+            
+            
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
         
         shareMenu.addAction(twitterAction)
