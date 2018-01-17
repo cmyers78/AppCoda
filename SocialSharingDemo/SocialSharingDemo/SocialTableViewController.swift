@@ -54,12 +54,14 @@ class SocialTableViewController: UITableViewController {
         
         // Get the selected row
         let buttonPosition = sender.convert(CGPoint.zero, to: tableView)
+        let btn = sender.convert(CGPoint.zero, to: tableView)
+        print("btn is: \(btn)")
         print("button position chose is: \(buttonPosition)")
         
         guard let indexPath = tableView.indexPathForRow(at: buttonPosition) else {
             return
         }
-        
+        print("indexPath is: \(indexPath)")
         // Display the share menu
         let shareMenu = UIAlertController(title: nil, message: "Share using", preferredStyle: .actionSheet)
         let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.default, handler: nil)
